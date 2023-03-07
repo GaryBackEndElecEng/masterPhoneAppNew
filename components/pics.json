@@ -1,0 +1,27 @@
+[
+    {
+        "id":1,
+        "image":"https://new-master.s3.ca-central-1.amazonaws.com/static/beautyGirl.png",
+        "title":"title1"
+    },
+    {
+        "id":2,
+        "image":"https://new-master.s3.ca-central-1.amazonaws.com/static/beautyGirl.png",
+        "title":"title1"
+    },
+    {
+        "id":3,
+        "image":"https://new-master.s3.ca-central-1.amazonaws.com/static/beautyGirl.png",
+        "title":"title1"
+    },
+    {
+        "id":4,
+        "image":"https://new-master.s3.ca-central-1.amazonaws.com/static/beautyGirl.png",
+        "title":"title1"
+    },
+    {
+        "id":5,
+        "image":"https://new-master.s3.ca-central-1.amazonaws.com/static/beautyGirl.png",
+        "title":"title1"
+    }
+]
