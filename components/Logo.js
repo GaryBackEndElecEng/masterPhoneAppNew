@@ -20,7 +20,11 @@ const styles = StyleSheet.create({
         justifyContent:"center",
         alignItems:"center",
         flexDirection:"column",
-        backgroundColor:"blue"
+        backgroundColor:"blue",
+        zIndex:"10",
+        marginTop:0,
+        marginBottom:0,
+        height:"100%"
     },
     propShadow:{
         shadowOffset:{width:3,height:3},
@@ -28,13 +32,14 @@ const styles = StyleSheet.create({
         shadowRadius:50
     },
     logoStyle:{
-        width:75,
-        height:75,
+        width:85,
+        height:85,
+        margin:70,
         borderRadius:75/2
     },
     master:{
         position:"absolute",
-        top:2,
+        top:20,
         fontSize:20
     }
 })

@@ -14,14 +14,14 @@ const Footer = () => {
     Animated.timing(dropDownEle,{
       toValue:1,
       duration:1500,
-      useNativeDriver:true,
+      useNativeDriver:false,
     }).start();
   }
   const fadeOut=()=>{
     Animated.timing(dropDownEle,{
       toValue:0,
       duration:1000,
-      useNativeDriver:true,
+      useNativeDriver:false,
     }).start();
   }
 
@@ -33,10 +33,10 @@ const Footer = () => {
     }else{fadeOut();setOpen(false);}
   };
   return (
-    <View style={[styles.shadowProp,{position:"relative",bottom:0,width:"100%"}]}>
-      <Button variant="contain" onPress={(e)=>handleOpen(e)} title="Navigation"/>
+    <View style={[{position:"relative",bottom:0,width:"100%"}]}>
+      <Button variant="contain" onPress={(e)=>handleOpen(e)} title="Navigation">Navigation</Button>
       {open &&
-    <AnimatedTouchable >
+    <AnimatedTouchable style={{opacity:dropDownEle}} >
          <ListItem
          onPress={(e)=>router.push('/')}
          title="home"
