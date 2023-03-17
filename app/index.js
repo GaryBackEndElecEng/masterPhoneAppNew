@@ -89,7 +89,7 @@ const Index = () => {
 
         <Stack
           w={"100%"}
-          h={500}
+          h={600}
           spacing={0}
           direction="column"
           style={{ alignItems: "center", justifyContent: "center" }}
@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
   },
   text:{
     fontSize:20,
-    fonWeight:600,
+    fontWeight:"600",
     margin:20,
     padding:10,
     marginBottom:30

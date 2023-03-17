@@ -64,7 +64,7 @@ const Videos = ({width}) => {
               direction="column"
               spacing={1}
               key={`${obj.id}--${index}`}
-              style={[styles.stackCol,{alignItems:"center",justifyContent:"center",width:getWidth,}]}
+              style={[styles.stackCol,{alignItems:"center",justifyContent:"flex-start",width:getWidth,}]}
             >
               <MaterialIcons
               name="touch-app"
@@ -91,8 +91,9 @@ const Videos = ({width}) => {
                 <Image
                   source={{ uri: `${staticImage}/${obj.frontCover}` }}
                   alt="www"
-                  style={{ width:"80%", minHeight:400,margin:"auto",height:"100%",padding:50 }}
+                  style={{ width:width, height:400,margin:"auto",padding:50 }}
                   variant="contain"
+                  resizeMode="contain"
                 />
               </TouchableOpacity>
             </Stack>
@@ -108,10 +109,11 @@ const styles = StyleSheet.create({
     flex: 1,
     width: "100%",
     minWidth: 365,
-    maxWidth: 800,
+    // maxWidth: 800,
     alignItems: "center",
     justifyContent: "flex-start",
-    overflowX: "hidden",
+    marginBottom:0,
+    paddingBottom:10
   },
   stackCol: {
     margin: "auto",
@@ -124,18 +126,18 @@ const styles = StyleSheet.create({
     position:"absolute",
     top:"5%",
     right:"-0.1%",
-    zIndex:1000
+    // zIndex:1000
 },
 swipeLeft:{
     position:"absolute",
     top:"5%",
     left:"1.3%",
-    zIndex:1000
+    // zIndex:1000
 },
 touchIcon: {
   position: "absolute",
   top: "5%",
   right: "20%",
-  zIndex: 200,
+  // zIndex: 200,
 },
 });

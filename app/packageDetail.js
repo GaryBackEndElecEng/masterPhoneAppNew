@@ -43,7 +43,7 @@ const PackageDetail = () => {
     },[packages,id,width,setTitleSize]);
     
   return (
-    <View style={styles.container}>
+    <View style={[styles.container,{width:width}]}>
       
         <ScrollView style={{margin:"auto"}}>
           {Package.loaded && 
@@ -57,7 +57,7 @@ const PackageDetail = () => {
           <Image source={{uri:`${staticImage}/${Package.data.image}`}} alt="www" style={[styles.image,{width:width}]}/>
           <View style={styles.container2}>
           <Text style={[styles.title,roboto,{backgroundColor:"blue",width:"100%",textAlign:"center",color:"white",padding:10}]} variant="h4">Included Services</Text>
-          <ScrollView style={{height:600,width:width,marginTop:20,marginBottom:20}} >
+          <View style={{width:width,marginTop:20,marginBottom:20}} >
             {Package.data.products[0].services.map(obj=>(
               
                 <View style={styles.container2} key={`${obj.id}-this`}>
@@ -70,7 +70,7 @@ const PackageDetail = () => {
                 </View>
               
             ))}
-            </ScrollView>
+            </View>
           </View>
           </View>
           
@@ -89,6 +89,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
     flexDirection: "column",
+    textAlign:"center"
   },
   container2: {
     margin:"auto",

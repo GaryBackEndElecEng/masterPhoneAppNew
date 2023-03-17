@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
         alignItems:"center",
         flexDirection:"column",
         backgroundColor:"blue",
-        zIndex:"10",
+        zIndex:10,
         marginTop:0,
         marginBottom:0,
         height:"100%"

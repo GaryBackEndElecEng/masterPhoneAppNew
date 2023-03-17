@@ -50,7 +50,7 @@ const LoadImages = ({ innerWidth, innerHeight, roboto, isPortrait }) => {
       .filter((obj) => obj.type === "pageDesign")
       .forEach((product, index) => {
         arr.push(
-          <Stack direction="column" spacing={1} style={[styles.stack,{width:innerWidth}]}>
+          <Stack direction="column" spacing={1} style={[styles.stack,{width:innerWidth}]} key={product.id}>
             <Text variant="h4" style={[styles.title, roboto,]}>
                 Design Page
               </Text>
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     position: "relative",
     // top: "80%",
     paddingBottom: 20,
-    zIndex: 1000,
+    // zIndex: 1000,
     color: "white",
     backgroundColor: "rgba(0,0,0,.5)",
     width: "70%",
@@ -147,12 +147,12 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: "5%",
     right: "10%",
-    zIndex: 200,
+    // zIndex: 200,
   },
   button: {
     // backgroundColor: "black",
     color: "white",
-    zIndex: 2000,
+    // zIndex: 2000,
     width: 400,
     height: 100,
     position: "absolute",

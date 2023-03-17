@@ -19,6 +19,7 @@ import {
   import products from "../components/extra/products";
   import TextEffect from "../components/extra/TextEffect";
   import VideoClass from '../components/extra/VideoClass';
+  import ExpoVideo from '../components/extra/ExpoVideo';
   
   const detailVideo = () => {
     const params = useSearchParams();
@@ -56,8 +57,8 @@ import {
   }, [products, id]);
     return (
       <SafeAreaView style={[styles.container,{marginBottom:50,width:width}]}>
-      
-        <Stack direction="row"  style={[styles.stackProdRow,{justifyContent:"center"}]}>
+      <ScrollView>
+        
           <Stack direction="column"  style={[styles.stackProdCol]}>
             {prodVideo.loaded && (
               <View style={{ margin: "auto" }}>
@@ -75,10 +76,8 @@ import {
                   fontFamily={"Roboto"}
                   bold={false}
                 />
-                {/* <Video_ video_={`${staticImage}/${prodVideo.data.imageName}`}
-                imgWidth={imgWidth}
-                /> */}
-                <VideoClass 
+            
+                <ExpoVideo 
                 video_={`${staticImage}/${prodVideo.data.imageName}`}
                 width={width} image={`${staticImage}/${prodVideo.data.frontCover}`}
                 />
@@ -90,27 +89,27 @@ import {
               </View>
             )}
           </Stack>
-          <Stack direction="column"  style={[styles.stackProdCol,{alignSelf:"center",justifySelf:"center"}]}>
+          <Stack direction="column"  style={[styles.stackProdCol,{alignSelf:"center",justifySelf:"center",width:width,padding:10}]}>
             {prodVideo.loaded && (
               <View style={{ margin: "auto" }}>
                 <Text variant="h5" style={styles.titleProd}>
                   summary 
                 </Text>
-                <Text variant="body1" style={[styles.prodSummary,{margin:"auto",width:"80%"}]}>
+                <Text variant="body1" style={[styles.prodSummary,{margin:"auto",width:width,textAlign:"center"}]}>
                   {prodVideo.data.summary}
                 </Text>
                 <Text variant="h5" style={styles.titleProd}>
                   Description
                 </Text>
-                <Text variant="body2" style={[styles.prodDesc,{margin:"auto",width:"80%"}]}>
+                <Text variant="body2" style={[styles.prodDesc,{margin:"auto",width:width,textAlign:"center"}]}>
                   {prodVideo.data.desc}
                 </Text>
               </View>
             )}
           </Stack>
-        </Stack>
        
-      
+       
+        </ScrollView>
     </SafeAreaView>
     )
   }
@@ -132,6 +131,7 @@ import {
       flexWrap: "wrap",
     },
     stackProdCol: {
+      flex:1,
       justifyContent: "flex-start",
       alignItems: "center",
     },

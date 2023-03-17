@@ -34,7 +34,8 @@
     "react-native-screens": "~3.20.0",
     "react-native-vector-icons": "^9.2.0",
     "react-native-web": "~0.18.10",
-    "react-native-webview": "11.26.0"
+    "react-native-webview": "11.26.0",
+    "expo-av": "~13.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
@@ -53,6 +54,16 @@
     "last 1 firefox version",
     "last 1 safari version"
   ],
+  "expo": {
+    "plugins": [
+      [
+        "expo-av",
+        {
+          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone."
+        }
+      ]
+    ]
+  },
   "homepage": "http://localhost:19000",
   "name": "mainapp",
   "version": "1.0.0",

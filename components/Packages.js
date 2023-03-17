@@ -11,7 +11,7 @@ import { Box, Stack } from "@react-native-material/core";
 import packages from "./extra/packages";
 import { useRouter, Link } from "expo-router";
 import apiPackages from "./extra/apiPackages";
-import axios from 'axios';
+import axios from "axios";
 
 const Packages = ({ width, roboto }) => {
   const route = useRouter();
@@ -19,13 +19,13 @@ const Packages = ({ width, roboto }) => {
   const [Packages, setPackages] = useState({ loaded: false, data: {} });
 
   const [getPackages, setGetPackages] = useState({});
-// console.log(apiPackages());
+  // console.log(apiPackages());
 
- useEffect(()=>{
-    if(packages){
-        setPackages({loaded:true,data:packages});
+  useEffect(() => {
+    if (packages) {
+      setPackages({ loaded: true, data: packages });
     }
- },[packages]);
+  }, [packages]);
 
   return (
     <View style={styles.container}>
@@ -42,38 +42,40 @@ const Packages = ({ width, roboto }) => {
       >
         PACKAGES
       </Text>
-      <ScrollView
-        horizontal={false}
-        vertical={true}
-        showsHorizontalScrollIndicator={false}
-        scrollEnabled={true}
-        snapToStart={true}
-        style={[styles.scrollview]}
-      >
-        {Packages.loaded &&
-          Packages.data.map((obj, index) => (
-            <Stack
-              direction="column"
-              key={`${obj.id}--${index}`}
-              style={[styles.stack1, { width: width }]}
-            >
-              <Text>name:{obj.name}</Text>
-              <Text>Special Offer{obj.specialOffer}</Text>
-              <Text>monthly:${obj.monthly}.00</Text>
-
-              <TouchableOpacity
-                style={{ margin: "auto", width: width }}
-                onPress={() => route.push(`/packageDetail/?id=${obj.id}`)}
+    
+        <ScrollView
+          horizontal={false}
+          vertical={true}
+          showsHorizontalScrollIndicator={false}
+          scrollEnabled={true}
+          snapToStart={true}
+          style={[styles.scrollview]}
+        >
+          {Packages.loaded &&
+            Packages.data.map((obj, index) => (
+              <Stack
+                direction="column"
+                key={`${obj.id}--${index}`}
+                style={[styles.stack1, { width: width }]}
               >
-                <Image
-                  source={{ uri: `${url}/${obj.image}` }}
-                  alt="www"
-                  style={[styles.image, { width: width }]}
-                />
-              </TouchableOpacity>
-            </Stack>
-          ))}
-      </ScrollView>
+                <Text>name:{obj.name}</Text>
+                <Text>Special Offer{obj.specialOffer}</Text>
+                <Text>monthly:${obj.monthly}.00</Text>
+
+                <TouchableOpacity
+                  style={{ margin: "auto", width: width }}
+                  onPress={() => route.push(`/packageDetail/?id=${obj.id}`)}
+                >
+                  <Image
+                    source={{ uri: `${url}/${obj.image}` }}
+                    alt="www"
+                    style={[styles.image, { width: width }]}
+                  />
+                </TouchableOpacity>
+              </Stack>
+            ))}
+        </ScrollView>
+      
     </View>
   );
 };
@@ -89,6 +91,7 @@ const styles = StyleSheet.create({
     maxHeight: 500,
   },
   scrollview: {
+    // flex:1,
     height: 400,
   },
   stack1: {

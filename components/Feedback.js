@@ -48,7 +48,14 @@ const Feedback = ({width,height}) => {
     },[category]);
   return (
     <View style={styles.container}>
-      <ScrollView style={[styles.scrollview,{width:width,height:stackHeight}]}>
+      <ScrollView 
+      horizontal={false}
+      vertical={true}
+      showsHorizontalScrollIndicator={false}
+      scrollEnabled={true}
+      snapToStart={true}
+      style={[styles.scrollview,{width:width,height:stackHeight}]}
+      >
         <Stack direction={rowCol} spacing={20} style={[styles.stackRow,justify]}>
         {feedback.loaded && feedback.data.map((obj,index)=>(
             <Stack direction="column" spacing={1} style={[styles.stackCol,{width:stackWidth}]} key={`${obj.id}--${index}`}>
