@@ -20,6 +20,7 @@ import {
   import TextEffect from "../components/extra/TextEffect";
   import VideoClass from '../components/extra/VideoClass';
   import ExpoVideo from '../components/extra/ExpoVideo';
+  import api from '../components/axios/api';
   
   const detailVideo = () => {
     const params = useSearchParams();
@@ -28,6 +29,7 @@ import {
   const staticImage = "https://new-master.s3.ca-central-1.amazonaws.com/static";
   const image = `${staticImage}/video/videoImage.png`;
   const [prodVideo, setProdVideo] = useState({ loaded: false, data: {} });
+  const [prod_video, setProd_video] = useState({ loaded: false, data: {} });
   const [isReady, setIsReady] = useState(false);
   const [imgWidth, setImgWidth] = useState(375);
   useEffect(() => {
@@ -43,34 +45,38 @@ import {
     setImgWidth(width);
   }, [setIsReady, width]);
 
-  useEffect(() => {
-    // console.log("ID",id)
-    if (products && id) {
-      // console.log(products[0].name,"ID",id)
-      let prodVideo = products.filter(obj=>(obj.type ==="video")).filter(
-        (obj) => parseInt(obj.id) === parseInt(id)
-      )[0];
-      //   console.log(prodVideos)
-      setProdVideo({ loaded: true, data: prodVideo });
-      
-    }
-  }, [products, id]);
+    useEffect(()=>{
+      const getVideo= async()=>{
+        const url='/account/product/'
+        try {
+          const res=await api.get(url);
+          const body=res.data;
+          const video=body.filter(obj=>(parseInt(obj.id)===parseInt(id)))[0];
+          setProd_video({loaded:true,data:video});
+        } catch (error) {
+          console.error(error.message);
+        }
+      };
+      getVideo();
+    },[id]);
+
+  
     return (
       <SafeAreaView style={[styles.container,{marginBottom:50,width:width}]}>
       <ScrollView>
         
-          <Stack direction="column"  style={[styles.stackProdCol]}>
-            {prodVideo.loaded && (
+          <Stack direction="column"  style={[styles.stackProdCol,{width:width}]}>
+            {prod_video.loaded && (
               <View style={{ margin: "auto" }}>
                 <TextEffect
-                  text={prodVideo.data.name}
+                  text={prod_video.data.name}
                   delay={500}
                   fontSize={30}
                   fontFamily={"Roboto"}
                   bold={true}
                 />
                 <TextEffect
-                  text={prodVideo.data.category}
+                  text={prod_video.data.category}
                   delay={1000}
                   fontSize={30}
                   fontFamily={"Roboto"}
@@ -78,31 +84,31 @@ import {
                 />
             
                 <ExpoVideo 
-                video_={`${staticImage}/${prodVideo.data.imageName}`}
-                width={width} image={`${staticImage}/${prodVideo.data.frontCover}`}
+                video_={`${staticImage}/${prod_video.data.imageName}`}
+                width={width} image={`${staticImage}/${prod_video.data.frontCover}`}
                 />
 
                 <Text variant="h5" style={styles.titleDollar}>
-                  5yr monthly price: ${prodVideo.data.monthly}.00
+                  5yr monthly price: ${prod_video.data.monthly}.00
                   
                 </Text>
               </View>
             )}
           </Stack>
           <Stack direction="column"  style={[styles.stackProdCol,{alignSelf:"center",justifySelf:"center",width:width,padding:10}]}>
-            {prodVideo.loaded && (
+            {prod_video.loaded && (
               <View style={{ margin: "auto" }}>
                 <Text variant="h5" style={styles.titleProd}>
                   summary 
                 </Text>
                 <Text variant="body1" style={[styles.prodSummary,{margin:"auto",width:width,textAlign:"center"}]}>
-                  {prodVideo.data.summary}
+                  {prod_video.data.summary}
                 </Text>
                 <Text variant="h5" style={styles.titleProd}>
                   Description
                 </Text>
                 <Text variant="body2" style={[styles.prodDesc,{margin:"auto",width:width,textAlign:"center"}]}>
-                  {prodVideo.data.desc}
+                  {prod_video.data.desc}
                 </Text>
               </View>
             )}
@@ -131,7 +137,7 @@ import {
       flexWrap: "wrap",
     },
     stackProdCol: {
-      flex:1,
+      
       justifyContent: "flex-start",
       alignItems: "center",
     },

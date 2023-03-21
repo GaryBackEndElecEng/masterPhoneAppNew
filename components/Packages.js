@@ -1,5 +1,4 @@
 import {
-  Text,
   View,
   ScrollView,
   Image,
@@ -7,58 +6,45 @@ import {
   StyleSheet,
 } from "react-native";
 import React, { useState, useEffect } from "react";
-import { Box, Stack } from "@react-native-material/core";
+import { Box, Stack, Text,} from "@react-native-material/core";
 import packages from "./extra/packages";
 import { useRouter, Link } from "expo-router";
 import apiPackages from "./extra/apiPackages";
-import axios from "axios";
+import api from "../components/axios/api";
 
 const Packages = ({ width, roboto }) => {
   const route = useRouter();
   const url = "https://new-master.s3.ca-central-1.amazonaws.com/static";
   const [Packages, setPackages] = useState({ loaded: false, data: {} });
+  const [Packages_, setPackages_] = useState({ loaded: false, data: {} });
 
   const [getPackages, setGetPackages] = useState({});
-  // console.log(apiPackages());
+ 
 
   useEffect(() => {
-    if (packages) {
-      setPackages({ loaded: true, data: packages });
-    }
+    
+    const getPackages= async()=>{
+      try {
+        const res=await api.get('/account/getPackages/');
+        const body=res.data;
+        setPackages_({loaded:true,data:body})
+      } catch (error) {
+        console.error(error.message)
+      }
+    };
+    getPackages();
   }, [packages]);
 
   return (
     <View style={styles.container}>
-      <Text
-        style={[
-          {
-            margin: "auto",
-            textAlign: "center",
-            fontWeight: "800",
-            fontSize: 30,
-          },
-          roboto,
-        ]}
-      >
-        PACKAGES
-      </Text>
-    
-        <ScrollView
-          horizontal={false}
-          vertical={true}
-          showsHorizontalScrollIndicator={false}
-          scrollEnabled={true}
-          snapToStart={true}
-          style={[styles.scrollview]}
-        >
-          {Packages.loaded &&
-            Packages.data.map((obj, index) => (
+          {Packages_.loaded &&
+            Packages_.data.map((obj, index) => (
               <Stack
                 direction="column"
                 key={`${obj.id}--${index}`}
                 style={[styles.stack1, { width: width }]}
               >
-                <Text>name:{obj.name}</Text>
+                <Text variant="h5">{obj.name}</Text>
                 <Text>Special Offer{obj.specialOffer}</Text>
                 <Text>monthly:${obj.monthly}.00</Text>
 
@@ -69,12 +55,12 @@ const Packages = ({ width, roboto }) => {
                   <Image
                     source={{ uri: `${url}/${obj.image}` }}
                     alt="www"
-                    style={[styles.image, { width: width }]}
+                    style={[styles.image, { width: width ,height:400}]}
                   />
                 </TouchableOpacity>
               </Stack>
             ))}
-        </ScrollView>
+        
       
     </View>
   );
@@ -84,17 +70,18 @@ export default Packages;
 
 const styles = StyleSheet.create({
   container: {
-    // flex:1,
+    
     justifyContent: "flex-start",
     alignItems: "center",
     flexDirection: "column",
-    maxHeight: 500,
+    
   },
   scrollview: {
-    // flex:1,
-    height: 400,
+    
+   
   },
   stack1: {
+    flex:1,
     justifyContent: "flex-start",
     alignItems: "center",
     // height:"100%",

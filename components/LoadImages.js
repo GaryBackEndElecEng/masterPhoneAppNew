@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
   },
 
   imgRow: {
-    textAlign:"center",
+    // textAlign:"center",
     margin:"auto",
     width: "100%",
     marginLeft: 2,

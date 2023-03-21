@@ -9,38 +9,51 @@ import {
   Animated,
   Image,
 } from "react-native";
-import React, { useEffect, useState ,useRef} from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useDeviceOrientation } from "@react-native-community/hooks";
 import { useRouter } from "expo-router";
 import { Box, Stack, Text } from "@react-native-material/core";
 import { AntDesign } from "@expo/vector-icons";
 import api from "./axios/api";
-import products from "./extra/products";
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+// import products from "./extra/products";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 
-const Videos = ({width}) => {
-  const scrollRef=useRef();
+const Videos = ({ width }) => {
+  const scrollRef = useRef();
   const isPortrait = useDeviceOrientation() === "portrait" ? true : false;
   const staticImage = "https://new-master.s3.ca-central-1.amazonaws.com/static";
   const image = `${staticImage}/video/videoImage.png`;
   const route = useRouter();
-  const [videoArr, setVideoArr] = useState({ loaded: false, data: [] });
-  const getWidth=isPortrait ? width:width/2*1.4;
+  const [video_arr, setVideo_arr] = useState({ loaded: false, data: [] });
+  const getWidth = isPortrait ? width : (width / 2) * 1.4;
   useEffect(() => {
-    if (products && products.length > 0) {
-      let videos = products.filter((obj) => obj.type === "video");
-      if (videos && videos.length > 0) {
-        setVideoArr({ loaded: true, data: videos });
+    const getVideos = async () => {
+      const url = "/account/product/";
+      try {
+        const res = await api.get(url);
+        const body = res.data;
+        const videos = body.filter((obj) => obj.type === "video");
+        if (videos.length > 0) {
+          setVideo_arr({ loaded: true, data: videos });
+        }
+      } catch (error) {
+        console.error(error.message);
       }
-    }
-  }, [products, setVideoArr]);
-
+    };
+    getVideos();
+  }, [setVideo_arr]);
+ 
   return (
     <Stack direction="column" style={styles.container}>
       <Text
         variant="h4"
-        style={{ margin: "auto", marginBottom: 20, width: "70%",textAlign:"center" }}
+        style={{
+          margin: "auto",
+          marginBottom: 20,
+          width: "70%",
+          textAlign: "center",
+        }}
       >
         Videos to view
       </Text>
@@ -50,34 +63,52 @@ const Videos = ({width}) => {
         showsHorizontalScrollIndicator={false}
         scrollEnabled={true}
         snapToStart={true}
-        style={{ width: getWidth, height: "100%", textAlign: "center",}}
+        style={{ width: getWidth, height: "100%", textAlign: "center" }}
       >
-        <MaterialCommunityIcons name="gesture-swipe-right" size={24} color="black"
-            style={styles.swipeRight}
-            />
-            <MaterialCommunityIcons name="gesture-swipe-left" size={24} color="black"
-            style={styles.swipeLeft}
-            />
-        {videoArr.loaded &&
-          videoArr.data.map((obj, index) => (
+        <MaterialCommunityIcons
+          name="gesture-swipe-right"
+          size={24}
+          color="black"
+          style={styles.swipeRight}
+        />
+        <MaterialCommunityIcons
+          name="gesture-swipe-left"
+          size={24}
+          color="black"
+          style={styles.swipeLeft}
+        />
+        {video_arr.loaded &&
+          video_arr.data.map((obj, index) => (
             <Stack
               direction="column"
               spacing={1}
               key={`${obj.id}--${index}`}
-              style={[styles.stackCol,{alignItems:"center",justifyContent:"flex-start",width:getWidth,}]}
+              style={[
+                styles.stackCol,
+                {
+                  alignItems: "center",
+                  justifyContent: "flex-start",
+                  width: getWidth,
+                },
+              ]}
             >
               <MaterialIcons
-              name="touch-app"
-              size={24}
-              color="black"
-              style={styles.touchIcon}
-            />
-                <Text
-                  variant="h5"
-                  style={{ top:"10%", marginBottom: 20, width: "70%",textAlign:"center" }}
-                >
-                  {obj.name}
-                </Text>
+                name="touch-app"
+                size={24}
+                color="black"
+                style={styles.touchIcon}
+              />
+              <Text
+                variant="h5"
+                style={{
+                  top: "10%",
+                  marginBottom: 20,
+                  width: "70%",
+                  textAlign: "center",
+                }}
+              >
+                {obj.name}
+              </Text>
               <TouchableOpacity
                 style={{
                   margin: "auto",
@@ -91,9 +122,14 @@ const Videos = ({width}) => {
                 <Image
                   source={{ uri: `${staticImage}/${obj.frontCover}` }}
                   alt="www"
-                  style={{ width:width, height:400,margin:"auto",padding:50 }}
+                  style={{
+                    width: width,
+                    height: 400,
+                    margin: "auto",
+                    padding: 50,
+                  }}
                   variant="contain"
-                  resizeMode="contain"
+                  resizeMode="stretch"
                 />
               </TouchableOpacity>
             </Stack>
@@ -112,8 +148,8 @@ const styles = StyleSheet.create({
     // maxWidth: 800,
     alignItems: "center",
     justifyContent: "flex-start",
-    marginBottom:0,
-    paddingBottom:10
+    marginBottom: 0,
+    paddingBottom: 10,
   },
   stackCol: {
     margin: "auto",
@@ -122,22 +158,22 @@ const styles = StyleSheet.create({
     justifySelf: "flex-start",
     gap: 10,
   },
-  swipeRight:{
-    position:"absolute",
-    top:"5%",
-    right:"-0.1%",
+  swipeRight: {
+    position: "absolute",
+    top: "5%",
+    right: "-0.1%",
     // zIndex:1000
-},
-swipeLeft:{
-    position:"absolute",
-    top:"5%",
-    left:"1.3%",
+  },
+  swipeLeft: {
+    position: "absolute",
+    top: "5%",
+    left: "1.3%",
     // zIndex:1000
-},
-touchIcon: {
-  position: "absolute",
-  top: "5%",
-  right: "20%",
-  // zIndex: 200,
-},
+  },
+  touchIcon: {
+    position: "absolute",
+    top: "5%",
+    right: "20%",
+    // zIndex: 200,
+  },
 });

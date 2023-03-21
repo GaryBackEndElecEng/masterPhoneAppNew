@@ -26,7 +26,7 @@ const Feedback = ({width,height}) => {
         if(width <600 && isPortrait){
             setRowCol("column");
             setStackWidth(width);
-            setStackHeight(height/2);
+            setStackHeight(height/1);
         }else{
             setStackWidth(width/2.2);
             setRowCol("row");
@@ -47,16 +47,16 @@ const Feedback = ({width,height}) => {
         }
     },[category]);
   return (
-    <View style={styles.container}>
+    <View style={[styles.container,]}>
       <ScrollView 
       horizontal={false}
       vertical={true}
       showsHorizontalScrollIndicator={false}
       scrollEnabled={true}
       snapToStart={true}
-      style={[styles.scrollview,{width:width,height:stackHeight}]}
+      style={[styles.scrollview,{width:width,}]}
       >
-        <Stack direction={rowCol} spacing={20} style={[styles.stackRow,justify]}>
+        <Stack direction={rowCol} spacing={20} style={[styles.stackRow,{justifyContent:"center",alignItems:"center"}]}>
         {feedback.loaded && feedback.data.map((obj,index)=>(
             <Stack direction="column" spacing={1} style={[styles.stackCol,{width:stackWidth}]} key={`${obj.id}--${index}`}>
                 <Stack direction="row" style={styles.stackAvatar} spacing={5}>
@@ -84,10 +84,12 @@ export default Feedback
 const styles = StyleSheet.create({
     container:{
         flex:1,
+        // height:500,
         justifyContent:"flex-start",
         alignItems:"center",
         flexDirection:"column",
         marginTop:10,
+        overflowY:"hidden"
         
     },
     scrollview:{
@@ -112,13 +114,15 @@ const styles = StyleSheet.create({
     flexWrap:"wrap",
     paddingTop:5,
     paddingBottom:5,
+    
 
 },
 rowWrap:{
     flexWrap:"wrap"
 },
 stackCol:{
-    margin:'auto'
+    margin:'auto',
+    flexDirection:"column"
 },
 stackAvatar:{
     backgroundColor:colors.yellow.dark

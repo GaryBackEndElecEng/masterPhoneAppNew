@@ -3,6 +3,7 @@ import {useRouter} from 'expo-router';
 import { Text, Box, Flex,ListItem, Button } from "@react-native-material/core";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { AntDesign } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 import {StyleSheet,View, Animated,TouchableOpacity} from 'react-native';
 
 const Footer = () => {
@@ -56,6 +57,13 @@ const Footer = () => {
          title="FAQS"
          size={24}
          leading={<AntDesign name="barschart" size={24} color="red" />}
+         trailing={<MaterialCommunityIcons name="chevron-right" color={"black"} size={28} />}
+         />
+         <ListItem
+         onPress={(e)=>router.push('/feedback')}
+         title="Design Feedback"
+         size={24}
+         leading={<MaterialIcons name="feedback" size={24} color="black" />}
          trailing={<MaterialCommunityIcons name="chevron-right" color={"black"} size={28} />}
          />
     </AnimatedTouchable>

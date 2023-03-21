@@ -260,7 +260,7 @@ const styles = StyleSheet.create({
     // fontSize:12
   },
   avatar: {
-    textAlign: "center",
+    // textAlign: "center",
     position: "relative",
     top: "0%",
     right: "-1%",

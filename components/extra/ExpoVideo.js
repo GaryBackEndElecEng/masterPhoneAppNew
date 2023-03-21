@@ -26,7 +26,7 @@ const ExpoVideo = ({video_,width,Image}) => {
               uri:video_,
             }}
             useNativeControls
-            resizeMode="contain"
+            resizeMode="stretch"
             isLooping
             onPlaybackStatusUpdate={status => setStatus(() => status)}
           />
@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
   },
   buttons:{
     marginTop:10,
-    marginBottom:10
+    marginBottom:10,
+    width:"100%"
   }
 })

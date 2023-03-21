@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, StyleSheet, Image } from "react-native";
+import { View, Text, ScrollView, StyleSheet, Image,useWindowDimensions } from "react-native";
 import React,{useEffect,useState} from "react";
 import { Box, Stack } from "@react-native-material/core";
 import FAQS from "../components/FAQS";
@@ -6,16 +6,24 @@ import { useDeviceOrientation } from "@react-native-community/hooks";
 
 
 const faqs = () => {
-  
+  const {width,height}=useWindowDimensions();
   const faqImg =
     "https://new-master.s3.ca-central-1.amazonaws.com/static/FAQS.png";
   const [setHeight,setSetHeight]=useState(300);
+  const [getwidth,setGetWidth]=useState(0);
   const isPortrait = useDeviceOrientation() === "portrait" ? true : false;
 
   useEffect(()=>{
-    const getHeight=isPortrait ? 200:300;
+    if(width && isPortrait){
+    const getHeight=200;
     setSetHeight(getHeight);
-  },[setSetHeight,isPortrait]);
+    setGetWidth(width);
+    }else{
+      setGetWidth(width);
+      const getHeight=400;
+      setSetHeight(getHeight);
+    }
+  },[setSetHeight,isPortrait,width]);
   
   return (
     <ScrollView
@@ -32,7 +40,7 @@ const faqs = () => {
           resizeMode="contain"
           source={{ uri: faqImg }}
           alt="www"
-          style={[styles.image,{height:setHeight}]}
+          style={[styles.image,{height:setHeight,width:getwidth}]}
         />
       </Stack>
       <FAQS />
@@ -49,9 +57,8 @@ const styles = StyleSheet.create({
   },
   stack: {
     // flex: 1,
-    width: window.innerWidth,
     height: 400,
-    border: "1px solid blue",
+    
   },
   image: {
     width: "100%",

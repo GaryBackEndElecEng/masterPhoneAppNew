@@ -1,6 +1,6 @@
 import {
   View,
-  Text,
+  
   StyleSheet,
   Image,
   SafeAreaView,
@@ -8,7 +8,7 @@ import {
   useWindowDimensions,
 } from "react-native";
 import { useState, useEffect } from "react";
-import { Box, Stack } from "@react-native-material/core";
+import { Box, Stack,Text } from "@react-native-material/core";
 import useFonts from "../components/hooks/useFonts";
 import { useDeviceOrientation } from "@react-native-community/hooks";
 import React from "react";
@@ -16,9 +16,9 @@ import Footer from "../components/Footer";
 import Slider from "../components/Slider";
 import Videos from "../components/Videos";
 import Packages from "../components/Packages";
-import Feedback from '../components/Feedback';
-import colors from '../components/extra/colors';
-import {Link} from 'expo-router';
+import Feedback from "../components/Feedback";
+import colors from "../components/extra/colors";
+import { Link } from "expo-router";
 
 const Index = () => {
   const { height, width, scale, fontScale } = useWindowDimensions();
@@ -44,7 +44,7 @@ const Index = () => {
   }, [setIsReady]);
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView>
       <ScrollView
         vertical={true}
         horizontal={false}
@@ -94,29 +94,40 @@ const Index = () => {
           direction="column"
           style={{ alignItems: "center", justifyContent: "center" }}
         >
-          <Link href={"https://www.masterconnect.ca/video"} style={[styles.text,styles.shadowProp]}>
-            <Text style={[styles.text,styles.shadowProp]}>click here for videos</Text>
+          <Link
+            href={"https://www.masterconnect.ca/video"}
+            style={[styles.text, styles.shadowProp]}
+          >
+            <Text style={[styles.text, styles.shadowProp]}>
+              click here for videos
+            </Text>
           </Link>
           <Videos width={width} />
         </Stack>
         <Stack
           w={"100%"}
-          h={500}
           spacing={0}
           direction="column"
-          style={{ alignItems: "center", justifyContent: "center" }}
+          style={[,{ alignItems: "center", justifyContent: "center" }]}
         >
+          <Text variant="h4"style={roboto}>Packages</Text>
+          <ScrollView style={{height:600}}>
           <Packages width={width} roboto={roboto} />
+          </ScrollView>
         </Stack>
         <Stack
-           w={"100%"}
-           h={500}
-         direction="column"
-         spacing={0}
-         style={{paddingTop:10,paddingBottom:10}}
+          w={"100%"}
+          // h={200}
+          spacing={0}
+          direction="column"
+          style={{
+            alignItems: "center",
+            justifyContent: "center",
+            marginBottom: 50,
+            marginTop: 50,
+          }}
         >
-          <Text variant="h3" style={{margin:"auto",height:50,fontSize:30,textAlign:"center",marginBottom:20,backgroundColor:colors.blue.medium,color:"white",width:width}}>Feedback</Text>
-        <Feedback width={width} height={height}/>
+          <Footer />
         </Stack>
       </ScrollView>
     </SafeAreaView>
@@ -132,7 +143,7 @@ const styles = StyleSheet.create({
     marginTop: 0,
     paddingVertical: 20,
     maxHeight: 3000,
-    // centerContent:true
+    marginBottom: 10,
   },
   container: {
     flex: 1,
@@ -173,14 +184,13 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 2, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 30,
-    backgroundColor:"rgba(0,0,0,0.3)"
+    backgroundColor: "rgba(0,0,0,0.3)",
   },
-  text:{
-    fontSize:20,
-    fontWeight:"600",
-    margin:20,
-    padding:10,
-    marginBottom:30
-    
+  text: {
+    fontSize: 20,
+    fontWeight: "600",
+    margin: 20,
+    padding: 10,
+    marginBottom: 30,
   },
 });
