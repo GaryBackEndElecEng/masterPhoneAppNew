@@ -1,6 +1,35 @@
 {
   "expo": {
-    "scheme": "acme",
-    "web": { "bundler": "metro" }
+    "name":"Master Connect App",
+    "slug":"master-connect-app",
+    "description":"All your webservices in one package",
+    "version":"1.0.0",
+    "orientation":"portrait",
+    "icon":"./assets/logo.png",
+    "splash":{
+      "image":"./assets/splash.png",
+      "resizeMode":"contain",
+      "backgroundColor":"#ffffff"
+    },
+    "updates":{
+      "fallbackToCacheTimeout":0
+    },
+    "assetBundlePatterns":[
+      "**/*"
+    ],
+    "ios":{
+      "supportsTablet":true
+    },
+    "android":{
+      "adaptiveIcon":{
+        "foregroundImage":"./assets/logo.png",
+        "backgroundColor":"#ffffff"
+      }
+    },
+    "scheme": "masterconnect",
+    "web": { 
+      "favicon":"./assets/favico.png",
+      "bundler": "metro"
+   }
   }
 }

@@ -1,6 +1,6 @@
 import {
   View,
-  
+  Button,
   StyleSheet,
   Image,
   SafeAreaView,
@@ -19,6 +19,9 @@ import Packages from "../components/Packages";
 import Feedback from "../components/Feedback";
 import colors from "../components/extra/colors";
 import { Link } from "expo-router";
+import { A } from '@expo/html-elements';
+import { TouchableOpacity } from "react-native-gesture-handler";
+import * as Linking from 'expo-linking';
 
 const Index = () => {
   const { height, width, scale, fontScale } = useWindowDimensions();
@@ -44,7 +47,7 @@ const Index = () => {
   }, [setIsReady]);
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{marginTop:0}}>
       <ScrollView
         vertical={true}
         horizontal={false}
@@ -53,30 +56,36 @@ const Index = () => {
         showsVerticalScrollIndicator={true}
         alwaysBounceVertical={true}
         // pagingEnabled={true}
-        style={[styles.contentContainer]}
+        style={[styles.contentContainer,]}
       >
         <Footer />
 
-        <View style={styles.msgContainer}>
+        
+        <Stack
+          w={"100%"}
+          spacing={3}
+          direction="column"
+          style={{ alignItems: "center", justifyContent: "flex-start", }}
+        >
+          <View style={styles.msgContainer}>
           <Text style={[styles.msgTitle, roboto]}>Web Design</Text>
-        </View>
-        <View style={styles.msgContainer}>
+        
           <Text style={[styles.msg, roboto]}>
             The Freedom to Get Exactly What You Want- Hassle-Free!
           </Text>
         </View>
-        <Stack
-          w={"100%"}
-          h={400}
-          spacing={0}
-          direction="column"
-          style={{ alignItems: "center", justifyContent: "center" }}
-        >
           <Image
             source={{ uri: businessMan }}
-            style={{ width: "100%", height: "100%" }}
+            style={{ width: "100%",height:400 }}
             alt="www"
           />
+        </Stack>
+        <Stack direction="column" spacing={3}>
+        <Button
+        title="Open masterconnect"
+        onPress={() => Linking.openURL('https://www.masterconnect.ca')}
+        style={styles.button}
+      />
         </Stack>
         <Stack
           direction="column"
@@ -89,28 +98,36 @@ const Index = () => {
 
         <Stack
           w={"100%"}
-          h={600}
+          // h={700}
           spacing={0}
           direction="column"
-          style={{ alignItems: "center", justifyContent: "center" }}
+          style={{ alignItems: "center", justifyContent: "flex-start",flex:1, }}
         >
           <Link
             href={"https://www.masterconnect.ca/video"}
             style={[styles.text, styles.shadowProp]}
           >
-            <Text style={[styles.text, styles.shadowProp]}>
+            
+            <Text style={[styles.text, styles.shadowProp,{color:"white"}]}>
               click here for videos
             </Text>
           </Link>
+         
+          <A href={"mailto:masterconnect919@gmail.com"} >
+            <TouchableOpacity>
+            <Text style={[styles.sendEmail,styles.shadowProp]}>requests</Text>
+            </TouchableOpacity>
+          </A>
+          
           <Videos width={width} />
         </Stack>
         <Stack
           w={"100%"}
           spacing={0}
           direction="column"
-          style={[,{ alignItems: "center", justifyContent: "center" }]}
+          style={[,{ alignItems: "center", justifyContent: "center", }]}
         >
-          <Text variant="h4"style={roboto}>Packages</Text>
+          <Text variant="h4"style={[roboto,{backgroundColor:colors.teal.light,width:width,textAlign:"center"}]}>Packages</Text>
           <ScrollView style={{height:600}}>
           <Packages width={width} roboto={roboto} />
           </ScrollView>
@@ -127,7 +144,12 @@ const Index = () => {
             marginTop: 50,
           }}
         >
-          <Footer />
+          <A href={"mailto:masterconnect919@gmail.com"} >
+            <TouchableOpacity>
+            <Text style={[styles.sendEmail,styles.shadowProp]}>request a Quote</Text>
+            </TouchableOpacity>
+          </A>
+        
         </Stack>
       </ScrollView>
     </SafeAreaView>
@@ -138,7 +160,6 @@ export default Index;
 
 const styles = StyleSheet.create({
   contentContainer: {
-    flex: 1,
     marginBottom: 20,
     marginTop: 0,
     paddingVertical: 20,
@@ -154,9 +175,9 @@ const styles = StyleSheet.create({
     marginTop: 0,
   },
   msgContainer: {
-    flex: 1,
+    
     marginTop: 20,
-    marginBottom: 20,
+    marginBottom: 30,
     textAlign: "center",
   },
   msg: {
@@ -166,25 +187,26 @@ const styles = StyleSheet.create({
   msgTitle: {
     fontSize: 40,
     color: "blue",
+    marginBottom:20
   },
   textStyle: {
     // flex:1,
     marginTop: 20,
-    marginBottom: 30,
+    marginBottom: 20,
   },
 
   backgrdImg: {
     marginTop: 0,
     width: "100%",
     // height: "50%",
-    // border:"1px solid black"
+    
   },
   shadowProp: {
     shadowColor: "black",
     shadowOffset: { width: 2, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 30,
-    backgroundColor: "rgba(0,0,0,0.3)",
+    backgroundColor: colors.primary,
   },
   text: {
     fontSize: 20,
@@ -192,5 +214,13 @@ const styles = StyleSheet.create({
     margin: 20,
     padding: 10,
     marginBottom: 30,
+  },
+  sendEmail:{
+    marginTop:20,
+    marginBottom:20,
+    fontSize:20,
+    padding:10,
+    color:"white",
+    borderRadius:40/2
   },
 });

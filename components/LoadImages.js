@@ -66,7 +66,7 @@ const LoadImages = ({ innerWidth, innerHeight, roboto, isPortrait }) => {
               <MaterialIcons
                 name="touch-app"
                 size={24}
-                color="black"
+                color="white"
                 style={styles.touchIcon}
               />
 
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
   stack:{
     justifyContent:"flex-start",
     alignItems:"center",
-    backgroundColor:colors.grey.light,
+    backgroundColor:"black",
     color:"white"
   },
 
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
   },
   touchIcon: {
     position: "absolute",
-    top: "5%",
+    top: "-10%",
     right: "10%",
     // zIndex: 200,
   },

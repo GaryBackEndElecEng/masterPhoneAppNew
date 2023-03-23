@@ -81,7 +81,7 @@ const Videos = ({ width }) => {
           video_arr.data.map((obj, index) => (
             <Stack
               direction="column"
-              spacing={1}
+              spacing={3}
               key={`${obj.id}--${index}`}
               style={[
                 styles.stackCol,
@@ -99,9 +99,9 @@ const Videos = ({ width }) => {
                 style={styles.touchIcon}
               />
               <Text
-                variant="h5"
+                variant="h6"
                 style={{
-                  top: "10%",
+                  marginTop: "5%",
                   marginBottom: 20,
                   width: "70%",
                   textAlign: "center",
@@ -124,12 +124,12 @@ const Videos = ({ width }) => {
                   alt="www"
                   style={{
                     width: width,
-                    height: 400,
+                    height: 300,
                     margin: "auto",
                     padding: 50,
                   }}
-                  variant="contain"
-                  resizeMode="stretch"
+                  
+                  resizeMode="contain"
                 />
               </TouchableOpacity>
             </Stack>
@@ -142,7 +142,6 @@ const Videos = ({ width }) => {
 export default Videos;
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     width: "100%",
     minWidth: 365,
     // maxWidth: 800,
@@ -173,7 +172,7 @@ const styles = StyleSheet.create({
   touchIcon: {
     position: "absolute",
     top: "5%",
-    right: "20%",
+    right: "10%",
     // zIndex: 200,
   },
 });

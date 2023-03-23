@@ -1,6 +1,5 @@
 import {
   View,
-  Text,
   StyleSheet,
   SafeAreaView,
   ScrollView,
@@ -10,7 +9,7 @@ import {
   Animated
 } from "react-native";
 import React, { useEffect, useState } from "react";
-import { Box, Stack } from "@react-native-material/core";
+import { Box, Stack,Text, } from "@react-native-material/core";
 import { AntDesign } from "@expo/vector-icons";
 import api from "../components/axios/api";
 import faqs from "../components/extra/faqs";
@@ -53,8 +52,8 @@ const FAQS = () => {
         console.error(error.message);
       }
     };
-    // getFAQS();//CORS ISSUE CROSS-ORIGIN
-    setFAQS({ data: faqs, loaded: true });
+    getFAQS();
+    // setFAQS({ data: faqs, loaded: true });
   }, []);
 
   const handleQuest = (e, id) => {
@@ -98,12 +97,12 @@ const FAQS = () => {
                       />
                     )}
                   </TouchableOpacity>
-                  <Text onPress={(e) => handleQuest(e, obj.id)} >
+                  <Text onPress={(e) => handleQuest(e, obj.id)} variant="h6" style={{fontWeight:400,paddingRight:10,paddingLeft:10}} >
                     {obj.question}
                   </Text>
                 </Stack>
                 {open.open && open.id === obj.id && (
-                <Text style={[styles.answer,styleChange()]}>{obj.answer}</Text>
+                <Text style={[styles.answer,styleChange()]} variant="h6">{obj.answer}</Text>
               )}
               </Stack>
               
@@ -127,10 +126,13 @@ const styles = StyleSheet.create({
   stackCol1: {
     justifyContent: "flex-start",
     alignItems: "flex-start",
+    gap:20,
+   
   },
   StackCol2: {
     justifyContent: "flex-start",
     alignItems: "center",
+    padding:5
   },
   StackCol3: {
     justifyContent: "flex-start",
@@ -146,6 +148,7 @@ const styles = StyleSheet.create({
     opacity:0,
     marginTop: 20,
     marginBottom: 20,
+    padding:10,
     color: "blue",
     transform:"translateY(-30px)",
     transition:"all 1s ease-in",

@@ -34,7 +34,7 @@ const Footer = () => {
     }else{fadeOut();setOpen(false);}
   };
   return (
-    <View style={[{position:"relative",bottom:0,width:"100%"}]}>
+    <View style={[{position:"relative",bottom:0,width:"100%",marginTop:20}]}>
       <Button variant="contain" onPress={(e)=>handleOpen(e)} title="Navigation">Navigation</Button>
       {open &&
     <AnimatedTouchable style={{opacity:dropDownEle}} >

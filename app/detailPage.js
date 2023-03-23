@@ -18,6 +18,7 @@ import { Box, Stack, Avatar, Text } from "@react-native-material/core";
 import { Link, useSearchParams } from "expo-router";
 import products from "../components/extra/products";
 import TextEffect from "../components/extra/TextEffect";
+import colors from '../components/extra/colors';
 
 const detailPage = () => {
   const params = useSearchParams();
@@ -61,7 +62,7 @@ const detailPage = () => {
   }, [products, id]);
 
   return (
-    <SafeAreaView style={[styles.container,{marginBottom:50}]}>
+    <SafeAreaView style={[styles.container, { marginBottom: 50 }]}>
       <ScrollView
         vertical={true}
         horizontal={false}
@@ -70,7 +71,11 @@ const detailPage = () => {
         showsVerticalScrollIndicator={true}
         alwaysBounceVertical={true}
       >
-        <Stack direction="row" spacing={0} style={[styles.stackProdRow,{justifyContent:"center"}]}>
+        <Stack
+          direction="row"
+          spacing={0}
+          style={[styles.stackProdRow, { justifyContent: "center" }]}
+        >
           <Stack direction="column" spacing={0} style={[styles.stackProdCol]}>
             {product.loaded && (
               <View style={{ margin: "auto" }}>
@@ -102,49 +107,72 @@ const detailPage = () => {
               </View>
             )}
           </Stack>
-          <Stack direction="column" spacing={1} style={[styles.stackProdCol,{alignSelf:"center",justifySelf:"center"}]}>
+          <Stack
+            direction="column"
+            spacing={1}
+            style={[
+              styles.stackProdCol,
+              { alignSelf: "center", justifySelf: "center" },
+            ]}
+          >
             {product.loaded && (
               <View style={{ margin: "auto" }}>
                 <Text variant="h5" style={styles.titleServ}>
                   summary
                 </Text>
-                <Text variant="body1" style={[styles.prodSummary,{margin:"auto",width:"40%"}]}>
+                <Text
+                  variant="body1"
+                  style={[styles.prodSummary, { width: width }]}
+                >
                   {product.data.summary}
                 </Text>
                 <Text variant="h5" style={styles.titleServ}>
                   Description
                 </Text>
-                <Text variant="body2" style={[styles.prodDesc,{margin:"auto",width:"40%"}]}>
+                <Text
+                  variant="body2"
+                  style={[, styles.prodDesc, { width: width }]}
+                >
                   {product.data.desc}
                 </Text>
               </View>
             )}
           </Stack>
         </Stack>
-        <Stack direction="column" spacing={0} style={[styles.stackServCol1,{justifyContent:"flex-start",alignItems:"center"}]}>
+        <Stack
+          direction="column"
+          spacing={0}
+          style={[
+            styles.stackServCol1,
+            {  },
+          ]}
+        >
+          <Text variant="h3" style={[{width:width,backgroundColor:"black",color:"white",textAlign:"center"}]}>
+            Services
+          </Text>
           {services.loaded &&
             services.data.map((obj, index) => (
               <Stack
                 direction="column"
                 spacing={0}
-                style={[styles.stackServCol2,{margin:"auto"}]}
+                style={[styles.stackServCol2, { margin: "auto" }]}
                 key={`${obj.id}-${index}`}
               >
                 <Image
                   source={{ uri: `${staticImage}/${obj.image}` }}
                   alt="www"
-                  style={[styles.avatar]}
+                  style={[styles.avatar,styles.shadowProp]}
                 />
-                <Text variant="h4" style={styles.titleServ}>
+                <Text variant="h4" style={[styles.titleServ,styles.shadowTest]}>
                   {obj.name}
                 </Text>
-                <Text variant="h5" style={styles.titleServ}>
+                <Text variant="h5" style={[styles.titleServ,{fontWeight: "600",}]}>
                   summary
                 </Text>
                 <Text variant="body1" style={styles.servSummary}>
                   {obj.summary}
                 </Text>
-                <Text variant="h5" style={styles.titleServ}>
+                <Text variant="h5" style={[styles.titleServ,{fontWeight: "600",}]}>
                   description
                 </Text>
                 <Text variant="body2" style={styles.servDesc}>
@@ -185,14 +213,13 @@ const styles = StyleSheet.create({
   stackServCol1: {
     justifyContent: "flex-start",
     alignItems: "center",
+    textAlign: "center" 
   },
   stackServCol2: {
     justifyContent: "flex-start",
     alignItems: "center",
-    minHeight: 100,
-    marginLeft: 50,
     marginBottom: 50,
-    marginTop: 100,
+    marginTop: 50,
   },
   titleProd: {
     textAlign: "center",
@@ -227,49 +254,58 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: 20,
     marginBottom: 20,
-    paddingLeft: 50,
-    paddingRight: 50,
-    width:"80%"
+    margin: "auto",
   },
   prodDesc: {
     fontWeight: "bold",
     fontFamily: "Roboto",
-    textAlign: "center",
-    paddingLeft: 20,
-    paddingRight: 20,
-    width:"80%"
-    // fontSize:12
-  },
-  servSummary: {
-    fontWeight: "bold",
-    fontFamily: "Roboto",
+    margin: "auto",
     textAlign: "center",
     marginTop: 20,
+    marginBottom: 20,
+  },
+  servSummary: {
+    fontWeight: "500",
+    fontFamily: "Roboto",
+    textAlign: "center",
+    marginTop: 10,
     marginBottom: 20,
     paddingLeft: 20,
     paddingRight: 20,
     // fontSize:14
   },
   servDesc: {
-    fontWeight: "bold",
+    fontWeight: "500",
     fontFamily: "Roboto",
     textAlign: "center",
     textAlign: "center",
     paddingLeft: 20,
     paddingRight: 20,
-    // fontSize:12
+    marginBottom: 20,
+    marginTop: 10,
   },
   avatar: {
     // textAlign: "center",
     position: "relative",
     top: "0%",
-    right: "-1%",
-    width: 100,
-    height: 100,
-    padding: 40,
-    borderRadius: 130 / 2,
+    width: 80,
+    height: 80,
+    padding: 0,
+    borderRadius: 80 / 2,
     backgroundColor: "white",
-    alignSelf: "center",
-    justifySelf: "center",
+    
+  },
+  shadowProp: {
+    shadowColor: colors.blue.light,
+    shadowOffset: { width: 2, height: -2 },
+    shadowOpacity: 0.9,
+    // shadowRadius: 230 / 2,
+    zIndex:1000
+  },
+  shadowTest: {
+    shadowColor: "black",
+    shadowOffset: { width: 2, height: 2 },
+    shadowOpacity: 0.5,
+    zIndex:1000,
   },
 });

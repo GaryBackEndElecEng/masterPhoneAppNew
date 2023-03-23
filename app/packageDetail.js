@@ -38,14 +38,14 @@ const PackageDetail = () => {
           });
         }
         if(width && width<400){
-          setTitleSize({fontSize:22});
+          setTitleSize({fontSize:26});
         }
     },[packages,id,width,setTitleSize]);
     
   return (
     <View style={[styles.container,{width:width}]}>
       
-        <ScrollView style={{margin:"auto"}}>
+        <ScrollView style={{margin:"auto",width:width}}>
           {Package.loaded && 
           <View style={styles.container2}>
           <Text style={[styles.title,roboto,titleSize,{textAlign:"center",width:"100%",backgroundColor:colors.blue.medium,padding:30,color:"white"}]} variant="h4"> {Package.data.name}</Text>
@@ -62,7 +62,7 @@ const PackageDetail = () => {
               
                 <View style={styles.container2} key={`${obj.id}-this`}>
                   <Image source={{uri:`${staticImage}/${obj.image}`}} style={styles.imageServ}/>
-                  <Text style={[styles.title,roboto,titleSize]} variant="h4"> {obj.name}</Text>
+                  <Text style={[styles.title,roboto,titleSize,styles.shadowTest]} variant="h4"> {obj.name}</Text>
                   <Text style={[styles.title,roboto]} variant="h5"> Summary</Text>
                   <Text style={[styles.summary,roboto]} variant="body1"> {obj.summary}</Text>
                   <Text style={[styles.title,roboto]} variant="h5"> Description</Text>
@@ -124,9 +124,15 @@ const styles = StyleSheet.create({
   imageServ:{
     margin:"auto",
     marginTop:20,
-    width:125,
-    height:125,
-    borderRadius:125/2,
+    width:85,
+    height:85,
+    borderRadius:85/2,
     
+  },
+  shadowTest: {
+    shadowColor: "black",
+    shadowOffset: { width: 2, height: 2 },
+    shadowOpacity: 0.5,
+    zIndex:1000,
   },
 })

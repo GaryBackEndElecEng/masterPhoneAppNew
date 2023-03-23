@@ -1,14 +1,17 @@
 import { Stack } from "expo-router";
 import { useTheme } from "@react-navigation/native";
 import Logo from "../components/Logo";
+import { useDeviceOrientation } from "@react-native-community/hooks";
+//const isPortrait = useDeviceOrientation() === "portrait" ? true : false;
 
 
 export default () => {
   return (
     <Stack
       screenOptions={{
-        headerStyle: { backgroundColor: "blue", height: 80 },
+        headerStyle: { backgroundColor: "blue"},
         headerTintColor: "white",
+        
       }}
     >
       <Stack.Screen
@@ -17,10 +20,13 @@ export default () => {
           title: "Home",
           headerBackground: () => <Logo />,
           headerTintColor: "transparent",
+          headerZIndex:"1000",
           headerStyle: {
-            height: 80,
             backgroundColor: "transparent",
+           
+            
           },
+         
         }}
       />
       <Stack.Screen
@@ -30,7 +36,6 @@ export default () => {
           // headerBackground:()=><Logo/>,
           headerTintColor: "white",
           headerStyle: {
-            height: 80,
             backgroundColor: "blue",
           },
         }}
@@ -43,7 +48,6 @@ export default () => {
           // headerBackground:()=><Logo/>,
           headerTintColor: "white",
           headerStyle: {
-            height: 80,
             backgroundColor: "blue",
           },
         }}

@@ -124,7 +124,9 @@ import {
 
   const styles = StyleSheet.create({
     container: {
-      flex: 1,
+      justifContent:"flex-start",
+      alignItems:"center",
+      flexDirection:"column"
     },
     scroll: {
       justifyContent: "flex-start",
@@ -137,24 +139,25 @@ import {
       flexWrap: "wrap",
     },
     stackProdCol: {
-      
+      flex:1,
       justifyContent: "flex-start",
       alignItems: "center",
+      marginBottom:10
     },
     
     titleProd: {
       textAlign: "center",
-      fontWeight: "bold",
+      fontWeight: 800,
       fontFamily: "Roboto",
     },
     titleCat: {
       textAlign: "center",
-      fontWeight: "bold",
+      fontWeight: 800,
       fontFamily: "Roboto",
       textAlign: "center",
     },
     titleDollar: {
-      fontWeight: "bold",
+      fontWeight: 800,
       fontFamily: "Roboto",
       textAlign: "center",
       color: "green",
@@ -164,7 +167,7 @@ import {
       height: 300,
     },
     prodSummary: {
-      fontWeight: "bold",
+      fontWeight: 800,
       fontFamily: "Roboto",
       textAlign: "center",
       marginTop: 20,
@@ -174,7 +177,7 @@ import {
       width:"80%"
     },
     prodDesc: {
-      fontWeight: "bold",
+      fontWeight: 800,
       fontFamily: "Roboto",
       textAlign: "center",
       paddingLeft: 20,

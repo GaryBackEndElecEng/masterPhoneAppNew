@@ -47,16 +47,18 @@ const Works = () => {
           <Stack direction="column" spacing={1} key={`${index}--${obj.id}`}
           style={[styles.stackColumn,styles.shadowProp]}
           >
-            <Text variant="h4" style={{margin:"auto"}}>{obj.name}</Text>
+            <Text variant="h4" style={{margin:"auto",textAlign:"center"}}>{obj.name}</Text>
+            <View >
             <Image source={{uri:`${staticImage}/${obj.imageName}`}} alt="www"
             style={styles.image}
             resizeMode="stretch"
             />
-            <Text variant="h5" style={{margin:"auto",color:"green"}}>5-yr monthly: ${obj.monthly}.00 </Text>
-            <Text variant="h4" style={{margin:"auto",marginTop:20,marginBottom:20}}>summary</Text>
-            <Text variant="h6" style={{margin:"auto",}}>{obj.summary}</Text>
-            <Text variant="h4" style={{margin:"auto",marginTop:20,marginBottom:20}}>Description</Text>
-            <Text variant="h6" style={{margin:"auto",marginBottom:20}}>{obj.desc}</Text>
+            </View>
+            <Text variant="h5" style={{margin:"auto",color:"green",textAlign:"center"}}>5-yr monthly: ${obj.monthly}.00 </Text>
+            <Text variant="h4" style={{margin:"auto",marginTop:20,marginBottom:20,textAlign:"center"}}>summary</Text>
+            <Text variant="body1" style={{margin:"auto",padding:10}}>{obj.summary}</Text>
+            <Text variant="h4" style={{margin:"auto",marginTop:20,marginBottom:20,textAlign:"center"}}>Description</Text>
+            <Text variant="body1" style={{margin:"auto",marginBottom:20,padding:10}}>{obj.desc}</Text>
           </Stack>
         ))}
       </Stack>
@@ -73,12 +75,16 @@ const styles = StyleSheet.create({
     marginBottom:30
   },
   stackContainer:{
-    flex:1,
-    width:"100%"
+    justifyContent:"flex-start",
+    width:"100%",
+    alignItems:"center"
   },
   stackColumn:{
+    flex:1,
     marginTop:20,
-    marginBottom:20
+    marginBottom:20,
+    // alignItems:"center",
+    // justifyContent:"flex-start"
   },
   shadowProp: {
     shadowColor: "black",
@@ -88,8 +94,7 @@ const styles = StyleSheet.create({
     // backgroundColor:"rgba(0,0,0,0.2)"
   },
   image:{
-   margin:"auto",
-    width:"100%",
+  //  margin:"auto",
     height:400,
   },
   colorStyle:{
