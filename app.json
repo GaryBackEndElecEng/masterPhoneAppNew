@@ -1,35 +1,43 @@
 {
   "expo": {
-    "name":"Master Connect App",
-    "slug":"master-connect-app",
-    "description":"All your webservices in one package",
-    "version":"1.0.0",
-    "orientation":"portrait",
-    "icon":"./assets/logo.png",
-    "splash":{
-      "image":"./assets/splash.png",
-      "resizeMode":"contain",
-      "backgroundColor":"#ffffff"
+    "name": "Master Connect App",
+    "slug": "master-connect-app",
+    "description": "All your webservices in one package",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/logo.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
     },
-    "updates":{
-      "fallbackToCacheTimeout":0
+    "updates": {
+      "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns":[
+    "assetBundlePatterns": [
       "**/*"
     ],
-    "ios":{
-      "supportsTablet":true
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.garywallace.masterconnectapp"
     },
-    "android":{
-      "adaptiveIcon":{
-        "foregroundImage":"./assets/logo.png",
-        "backgroundColor":"#ffffff"
-      }
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/logo.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.garywallace.masterconnectapp",
+      "versionCode":1
     },
     "scheme": "masterconnect",
-    "web": { 
-      "favicon":"./assets/favico.png",
+    "web": {
+      "favicon": "./assets/favico.png",
       "bundler": "metro"
-   }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "d00f159b-eef9-42e9-810b-c98db1de6adc"
+      }
+    }
   }
 }

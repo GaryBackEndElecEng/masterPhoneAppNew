@@ -83,12 +83,10 @@ const styles = StyleSheet.create({
       position:"absolute",
       top:"5%",
       right:"-0.1%",
-      // zIndex:1000
   },
   swipeLeft:{
       position:"absolute",
       top:"5%",
       left:"0.3%",
-      // zIndex:1000
   },
 });

@@ -113,19 +113,6 @@ const styles = StyleSheet.create({
     backgroundColor:"black",
     color:"white"
   },
-
-  imgRow: {
-    // textAlign:"center",
-    margin:"auto",
-    width: "100%",
-    marginLeft: 2,
-    marginRight: 2,
-    backgroundColor: "whitesmoke",
-    paddingBottom: 0,
-    marginBottom: 0,
-    paddingRight: 10,
-    paddingLeft: 10,
-  },
   title: {
     margin:"auto",
     textAlign: "center",
@@ -137,7 +124,6 @@ const styles = StyleSheet.create({
     position: "relative",
     // top: "80%",
     paddingBottom: 20,
-    // zIndex: 1000,
     color: "white",
     backgroundColor: "rgba(0,0,0,.5)",
     width: "70%",
@@ -147,12 +133,10 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: "-10%",
     right: "10%",
-    // zIndex: 200,
+    
   },
   button: {
-    // backgroundColor: "black",
     color: "white",
-    // zIndex: 2000,
     width: 400,
     height: 100,
     position: "absolute",

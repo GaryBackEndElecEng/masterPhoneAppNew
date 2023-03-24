@@ -29,6 +29,7 @@ const detailPage = () => {
   const [services, setServices] = useState({ loaded: false, data: {} });
   const [isReady, setIsReady] = useState(false);
   const [imgWidth, setImgWidth] = useState(375);
+  const roboto = isReady && { fontFamily: "Roboto" };
 
   useEffect(() => {
     const LoadFonts = async () => {
@@ -166,13 +167,13 @@ const detailPage = () => {
                 <Text variant="h4" style={[styles.titleServ,styles.shadowTest]}>
                   {obj.name}
                 </Text>
-                <Text variant="h5" style={[styles.titleServ,{fontWeight: "600",}]}>
+                <Text variant="h5" style={[styles.titleServ,{fontWeight: 600,}]}>
                   summary
                 </Text>
                 <Text variant="body1" style={styles.servSummary}>
                   {obj.summary}
                 </Text>
-                <Text variant="h5" style={[styles.titleServ,{fontWeight: "600",}]}>
+                <Text variant="h5" style={[styles.titleServ,{fontWeight: 600,}]}>
                   description
                 </Text>
                 <Text variant="body2" style={styles.servDesc}>
@@ -223,23 +224,23 @@ const styles = StyleSheet.create({
   },
   titleProd: {
     textAlign: "center",
-    fontWeight: "bold",
+    fontWeight: 800,
     fontFamily: "Roboto",
   },
   titleServ: {
     textAlign: "center",
-    fontWeight: "bold",
+    fontWeight: 800,
     fontFamily: "Roboto",
     textAlign: "center",
   },
   titleCat: {
     textAlign: "center",
-    fontWeight: "bold",
+    fontWeight: 800,
     fontFamily: "Roboto",
     textAlign: "center",
   },
   titleDollar: {
-    fontWeight: "bold",
+    fontWeight: 800,
     fontFamily: "Roboto",
     textAlign: "center",
     color: "green",
@@ -249,7 +250,7 @@ const styles = StyleSheet.create({
     height: 300,
   },
   prodSummary: {
-    fontWeight: "bold",
+    fontWeight: 800,
     fontFamily: "Roboto",
     textAlign: "center",
     marginTop: 20,
@@ -257,7 +258,7 @@ const styles = StyleSheet.create({
     margin: "auto",
   },
   prodDesc: {
-    fontWeight: "bold",
+    fontWeight: 800,
     fontFamily: "Roboto",
     margin: "auto",
     textAlign: "center",
@@ -265,7 +266,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   servSummary: {
-    fontWeight: "500",
+    fontWeight: 500,
     fontFamily: "Roboto",
     textAlign: "center",
     marginTop: 10,
@@ -275,7 +276,7 @@ const styles = StyleSheet.create({
     // fontSize:14
   },
   servDesc: {
-    fontWeight: "500",
+    fontWeight: 500,
     fontFamily: "Roboto",
     textAlign: "center",
     textAlign: "center",
@@ -300,12 +301,12 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 2, height: -2 },
     shadowOpacity: 0.9,
     // shadowRadius: 230 / 2,
-    zIndex:1000
+    zIndex:100
   },
   shadowTest: {
     shadowColor: "black",
     shadowOffset: { width: 2, height: 2 },
     shadowOpacity: 0.5,
-    zIndex:1000,
+    zIndex:100,
   },
 });

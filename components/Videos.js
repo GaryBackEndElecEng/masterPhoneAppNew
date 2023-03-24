@@ -161,18 +161,15 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: "5%",
     right: "-0.1%",
-    // zIndex:1000
   },
   swipeLeft: {
     position: "absolute",
     top: "5%",
     left: "1.3%",
-    // zIndex:1000
   },
   touchIcon: {
     position: "absolute",
     top: "5%",
     right: "10%",
-    // zIndex: 200,
   },
 });

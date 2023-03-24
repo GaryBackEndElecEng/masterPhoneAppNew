@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
         zIndex:10,
         marginTop:0,
         marginBottom:10,
-        zIndex:"1000"
        
     },
     propShadow:{

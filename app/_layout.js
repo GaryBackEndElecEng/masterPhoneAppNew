@@ -20,7 +20,6 @@ export default () => {
           title: "Home",
           headerBackground: () => <Logo />,
           headerTintColor: "transparent",
-          headerZIndex:"1000",
           headerStyle: {
             backgroundColor: "transparent",
            

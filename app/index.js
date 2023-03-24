@@ -128,9 +128,9 @@ const Index = () => {
           style={[,{ alignItems: "center", justifyContent: "center", }]}
         >
           <Text variant="h4"style={[roboto,{backgroundColor:colors.teal.light,width:width,textAlign:"center"}]}>Packages</Text>
-          <ScrollView style={{height:600}}>
+          <View style={{flex:1}} >
           <Packages width={width} roboto={roboto} />
-          </ScrollView>
+          </View>
         </Stack>
         <Stack
           w={"100%"}
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     marginTop: 0,
     paddingVertical: 20,
-    maxHeight: 3000,
+    // maxHeight: 3000,
     marginBottom: 10,
   },
   container: {
